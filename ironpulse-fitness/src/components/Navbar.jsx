@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import './Navbar.css';
+import { Dumbbell, Menu, X } from 'lucide-react';
 
 const navLinks = [
   { id: 1, label: 'Home', href: '#home' },
@@ -8,17 +10,50 @@ const navLinks = [
 ];
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen((prevMenu) => !prevMenu);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <header className="navbar">
       <nav className="navbar__container container" aria-label="Main navigation">
         <a href="#home" className="navbar__brand">
-          IRONPULSE
+          <Dumbbell className="navbar__icon" aria-hidden="true" />
+          <span className="navbar__brand-text">
+            <span className="navbar__brand-iron">Iron</span>
+            <span className="navbar__brand-pulse">Pulse</span>
+          </span>
         </a>
-        <ul className="navbar__links">
+        <button
+          type="button"
+          className="navbar__toggle"
+          onClick={toggleMenu}
+          aria-label={
+            isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'
+          }
+          aria-expanded={isMenuOpen}
+          aria-controls="primary-navigation"
+        >
+          {isMenuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+        </button>
+        <ul
+          className={`navbar__links ${isMenuOpen ? 'navbar__links--open' : ''}`}
+          id="primary-navigation"
+        >
           {navLinks.map((link) => {
             return (
               <li className="navbar__item" key={link.id}>
-                <a href={link.href} className="navbar__link">
+                <a
+                  href={link.href}
+                  className="navbar__link"
+                  onClick={closeMenu}
+                >
                   {link.label}
                 </a>
               </li>
