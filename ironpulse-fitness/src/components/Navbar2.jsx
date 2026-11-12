@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import './Navbar2.css';
-import { Dumbbell } from 'lucide-react';
+import { Dumbbell, Menu, X } from 'lucide-react';
 
 const navLinks = [
   { id: 1, label: 'Home', href: '#home' },
@@ -9,6 +10,12 @@ const navLinks = [
 ];
 
 const Navbar2 = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen((prevMenu) => !prevMenu);
+  };
+
   return (
     <header className="navbar2">
       <nav
@@ -23,7 +30,23 @@ const Navbar2 = () => {
           </span>
         </a>
 
-        <ul className="navbar2__links">
+        <button
+          aria-label={
+            isMenuOpen ? 'Close navigation menu' : 'Open Navigation menu'
+          }
+          aria-expanded={isMenuOpen}
+          aria-controls="primary-navigation"
+          type="button"
+          onClick={toggleMenu}
+          className="navbar2__toggle"
+        >
+          {isMenuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+        </button>
+
+        <ul
+          id="primary-navigation"
+          className={`navbar2__links ${isMenuOpen ? 'navbar2__links--open' : ''}`}
+        >
           {navLinks.map((link) => {
             return (
               <li className="navbar2__item" key={link.id}>
