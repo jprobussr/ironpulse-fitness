@@ -16,6 +16,10 @@ const Navbar2 = () => {
     setIsMenuOpen((prevMenu) => !prevMenu);
   };
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <header className="navbar2">
       <nav
@@ -50,7 +54,11 @@ const Navbar2 = () => {
           {navLinks.map((link) => {
             return (
               <li className="navbar2__item" key={link.id}>
-                <a href={link.href} className="navbar2__link">
+                <a
+                  href={link.href}
+                  className="navbar2__link"
+                  onClick={closeMenu}
+                >
                   {link.label}
                 </a>
               </li>

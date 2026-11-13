@@ -4,7 +4,7 @@ import Navbar2 from "./components/Navbar2.jsx";
 const App = () => {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Navbar2 />
       <main>
         <h1>IronPulse Fitness</h1>
