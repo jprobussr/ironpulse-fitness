@@ -5,7 +5,7 @@
   padding: 4rem 2rem;
   background-image:
     linear-gradient(rgba(10, 15, 25, 0.75), rgba(10, 15, 25, 0.55)),
-    url('/images/iron-pulse.png');
+    url("/images/iron-pulse.png");
   background-size: cover;
   background-position: center;
 }
@@ -41,7 +41,9 @@
   color: #fff;
   font-weight: 700;
   text-decoration: none;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .hero__cta:hover {
@@ -50,6 +52,23 @@
 }
 
 .hero__cta:focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 4px;
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 3rem 2rem;
+  }
+
+  .hero__cta {
+    margin-top: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__cta {
+    transition: none;
+    transform: none;
+  }
 }
