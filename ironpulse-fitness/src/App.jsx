@@ -1,5 +1,6 @@
 import Hero from "./components/Hero.jsx";
-import Navbar from "./components/Navbar.jsx";
+import Memberships from "./components/Memberships/Memberships.jsx";
+
 import Navbar2 from "./components/Navbar2.jsx";
 
 const App = () => {
@@ -9,6 +10,7 @@ const App = () => {
       <Navbar2 />
       <main>
         <Hero />
+        <Memberships />
       </main>
     </>
   );
