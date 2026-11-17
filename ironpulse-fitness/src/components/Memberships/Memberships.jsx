@@ -1,4 +1,5 @@
 import "./Memberships.css";
+import { Check } from "lucide-react";
 
 const membershipPlans = [
   {
@@ -29,11 +30,16 @@ const Memberships = () => {
         {membershipPlans.map((plan) => {
           return (
             <article key={plan.id} className="memberships__card">
-              <h3>{plan.name}</h3>
+              <h3 className="memberships__name">{plan.name}</h3>
               <p className="memberships__price">${plan.price}/month</p>
               <ul className="memberships__features">
                 {plan.features.map((feature) => {
-                  return <li key={feature}>{feature}</li>
+                  return (
+                    <li className="memberships__feature" key={feature}>
+                     <Check className="memberships__check" aria-hidden="true" />
+                      {feature}
+                    </li>
+                  );
                 })}
               </ul>
             </article>
