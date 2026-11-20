@@ -1,24 +1,24 @@
-import "./Memberships.css";
-import { Check } from "lucide-react";
+import MembershipCard from './MembershipCard.jsx';
+import './Memberships.css';
 
 const membershipPlans = [
   {
     id: 1,
-    name: "Basic",
+    name: 'Basic',
     price: 19,
-    features: ["Gym Access", "Cardio Equipment"],
+    features: ['Gym Access', 'Cardio Equipment'],
   },
   {
     id: 2,
-    name: "Pro",
+    name: 'Pro',
     price: 39,
-    features: ["Everything in Basic", "Group Classes", "Locker Access"],
+    features: ['Everything in Basic', 'Group Classes', 'Locker Access'],
   },
   {
     id: 3,
-    name: "Elite",
+    name: 'Elite',
     price: 59,
-    features: ["Everything in Pro", "Personal Training", "Guest Passes"],
+    features: ['Everything in Pro', 'Personal Training', 'Guest Passes'],
   },
 ];
 
@@ -29,20 +29,12 @@ const Memberships = () => {
       <div className="memberships__grid">
         {membershipPlans.map((plan) => {
           return (
-            <article key={plan.id} className="memberships__card">
-              <h3 className="memberships__name">{plan.name}</h3>
-              <p className="memberships__price">${plan.price}/month</p>
-              <ul className="memberships__features">
-                {plan.features.map((feature) => {
-                  return (
-                    <li className="memberships__feature" key={feature}>
-                     <Check className="memberships__check" aria-hidden="true" />
-                      {feature}
-                    </li>
-                  );
-                })}
-              </ul>
-            </article>
+            <MembershipCard
+              key={plan.id}
+              name={plan.name}
+              price={plan.price}
+              features={plan.features}
+            />
           );
         })}
       </div>
